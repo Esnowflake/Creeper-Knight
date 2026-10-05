@@ -1,0 +1,1 @@
+[14:16:25] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=maximum stationary, hit=false, closest=7.949472904205322, fastestStep=14.37308106307037

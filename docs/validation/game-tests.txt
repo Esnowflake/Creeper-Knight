@@ -1,0 +1,31 @@
+[14:26:34] [Server thread/INFO] (creeperknight) Creeper Knight runtime assertions passed: 59
+[14:26:35] [Server thread/INFO] (creeperknight) Scepter runtime assertions passed: 63
+[14:26:35] [Server thread/INFO] (creeperknight) Fuse movement test: start=3.5, end=5.487726260837236, fuse=1
+[14:26:35] [Server thread/INFO] (creeperknight) Scepter movement test: start=63.5, end=68.59887477167193, lockedTarget=ServerPlayer['PursuitTarget'/58, l='ServerLevel[Test Level]', x=70.50, y=-58.00, z=3.50]
+[14:26:35] [Server thread/INFO] (creeperknight) Movement test: start=23.5, end=28.295254401444833, ticks=35, riderTarget=Cow['Cow'/7, l='ServerLevel[Test Level]', x=31.50, y=-58.00, z=3.50], path=Path(length=9)
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=maximum stationary, hit=true, hitTick=6, closest=0.5589848160743713, fastestStep=5.657125382711254
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=maximum moving, hit=true, hitTick=5, closest=1.3755155801773071, fastestStep=6.3642663535876745
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=small instant radius, hit=true, hitTick=7, closest=0.34268492460250854, fastestStep=5.657125382711254
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=moving countdown, hit=true, hitTick=34, closest=0.30924105644226074, fastestStep=5.797598340444898
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=ordinary knight moving, hit=true, hitTick=31, closest=1.2489947080612183, fastestStep=1.7229982715902161
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=maximum around wall, hit=true, hitTick=15, closest=1.269271969795227, fastestStep=4.317591001760925
+[14:26:36] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=villager rider moving, hit=true, hitTick=6, closest=0.7406821846961975, fastestStep=5.797598340444898
+[14:26:36] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=stopped countdown, hit=true, hitTick=34, closest=2.2359395027160645, fastestStep=5.657125382711254
+[14:26:36] [Server thread/INFO] (creeperknight) High-speed pursuit scenarios passed: 8
+[14:26:36] [Server thread/INFO] (Minecraft) All 6 required tests passed :)
+[14:27:06] [Server thread/INFO] [creeperknight/]: Creeper Knight runtime assertions passed: 59
+[14:27:06] [Server thread/INFO] [creeperknight/]: Scepter runtime assertions passed: 63
+[14:27:07] [Server thread/INFO] [creeperknight/]: Fuse movement test: start=83.5, end=85.73050210441488, fuse=1
+[14:27:07] [Server thread/INFO] [creeperknight/]: Scepter movement test: start=103.5, end=108.59887477167193, lockedTarget=ServerPlayer['PursuitTarget'/94, l='ServerLevel[world]', x=110.50, y=-58.00, z=3.50]
+[14:27:07] [Server thread/INFO] [creeperknight/]: Movement test: start=43.5, end=47.991715971831326, ticks=35, riderTarget=Cow['Cow'/54, l='ServerLevel[world]', x=51.50, y=-58.00, z=3.50], path=Path(length=9)
+[14:27:09] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum stationary, hit=true, hitTick=6, closest=0.5589848160743713, fastestStep=5.657125382711254
+[14:27:09] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum moving, hit=true, hitTick=5, closest=1.3755155801773071, fastestStep=6.3642663535876745
+[14:27:09] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=small instant radius, hit=true, hitTick=7, closest=0.34268492460250854, fastestStep=5.657125382711254
+[14:27:10] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=moving countdown, hit=true, hitTick=34, closest=0.30924105644226074, fastestStep=5.797598340444898
+[14:27:10] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=ordinary knight moving, hit=true, hitTick=31, closest=0.6310230493545532, fastestStep=1.51700766255338
+[14:27:10] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum around wall, hit=true, hitTick=15, closest=1.617224097251892, fastestStep=4.317591001760926
+[14:27:10] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=villager rider moving, hit=true, hitTick=6, closest=0.7406821846961975, fastestStep=5.797598340444898
+[14:27:11] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=stopped countdown, hit=true, hitTick=34, closest=2.2359395027160645, fastestStep=5.657125382711254
+[14:27:11] [Server thread/INFO] [creeperknight/]: High-speed pursuit scenarios passed: 8
+[14:27:11] [Server thread/INFO] [minecraft/GameTestServer]: All 6 required tests passed :)
+BUILD SUCCESSFUL in 3m 32s

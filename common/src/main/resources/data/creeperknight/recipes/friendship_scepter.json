@@ -1,0 +1,11 @@
+{
+  "type": "creeperknight:scepter",
+  "category": "equipment",
+  "pattern": [" H ", " D ", " G "],
+  "key": {
+    "H": { "item": "minecraft:creeper_head" },
+    "D": { "item": "minecraft:diamond" },
+    "G": { "item": "minecraft:gold_ingot" }
+  },
+  "result": { "item": "creeperknight:friendship_scepter", "count": 1 }
+}

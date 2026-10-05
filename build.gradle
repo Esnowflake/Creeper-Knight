@@ -1,0 +1,54 @@
+plugins {
+    id 'fabric-loom' version '1.6.12' apply false
+    id 'net.minecraftforge.gradle' version '6.0.54' apply false
+}
+subprojects {
+    apply plugin: 'java'
+    group = rootProject.maven_group
+    version = rootProject.mod_version
+    java { toolchain.languageVersion = JavaLanguageVersion.of(17) }
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release = 17
+    }
+    sourceSets.main.java.srcDirs += rootProject.file('common/src/main/java')
+    sourceSets.main.resources.srcDirs += rootProject.file('common/src/main/resources')
+    if (rootProject.hasProperty('gameChecks')) {
+        sourceSets.main.java.srcDirs += [rootProject.file('common/src/gamecheck/java'), project.file('src/gamecheck/java')]
+        sourceSets.main.resources.srcDirs += rootProject.file('common/src/gamecheck/resources')
+    }
+    if (rootProject.hasProperty('uiChecks')) {
+        sourceSets.main.java.srcDirs += rootProject.file('common/src/uicheck/java')
+        tasks.named('processResources') {
+            doLast {
+                def config = file("${destinationDir}/creeperknight.mixins.json")
+                def json = new groovy.json.JsonSlurper().parse(config)
+                json.client = ['UiCaptureMixin']
+                config.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json))
+            }
+        }
+    }
+    repositories {
+        if (rootProject.file('tools/maven').exists()) maven {
+            url = rootProject.file('tools/maven')
+            metadataSources { mavenPom(); artifact() }
+        }
+        mavenCentral()
+    }
+    java.withSourcesJar()
+    tasks.named('jar') { from(rootProject.file('LICENSE')) }
+    sourceSets.test.java.srcDirs += rootProject.file('common/src/test/java')
+    tasks.register('configChecks', JavaExec) {
+        dependsOn 'testClasses'
+        classpath = sourceSets.test.runtimeClasspath
+        mainClass = 'dev.creeperknight.config.ConfigChecks'
+        args rootProject.file('common/src/main/resources').absolutePath
+    }
+    tasks.named('check') { dependsOn 'configChecks' }
+}
+tasks.register('collectJars', Copy) {
+    dependsOn ':fabric:remapJar', ':forge:reobfJar'
+    from('fabric/build/libs') { include '*-fabric.jar' }
+    from('forge/build/libs') { include '*-forge.jar' }
+    into 'dist'
+}

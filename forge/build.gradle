@@ -1,0 +1,72 @@
+plugins { id 'net.minecraftforge.gradle' }
+base { archivesName = "creeper-knight-${project.version}-mc1.20.1-forge" }
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+            args '-mixin.config=creeperknight.mixins.json'
+            if (rootProject.hasProperty('uiChecks')) {
+                property 'creeperknight.uiChecks', 'true'
+                args '--width', '960', '--height', '640'
+                workingDirectory project.file('build/ui-run')
+            }
+            mods { creeperknight { source sourceSets.main } }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+            args '--nogui', '-mixin.config=creeperknight.mixins.json'
+            mods { creeperknight { source sourceSets.main } }
+        }
+        if (rootProject.hasProperty('gameChecks')) {
+            gameTestServer {
+                workingDirectory project.file('build/gametest-run')
+                property 'forge.enabledGameTestNamespaces', 'creeperknight'
+                property 'mixin.env.remapRefMap', 'true'
+                property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+                args '-mixin.config=creeperknight.mixins.json'
+                mods { creeperknight { source sourceSets.main } }
+            }
+        }
+    }
+}
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5'
+    annotationProcessor 'com.google.code.gson:gson:2.10'
+    annotationProcessor 'com.google.guava:guava:31.1-jre'
+    annotationProcessor 'org.ow2.asm:asm-tree:9.5'
+    annotationProcessor 'org.ow2.asm:asm-commons:9.5'
+}
+def mixinMappings = tasks.register('mixinMappings') {
+    dependsOn 'createMcpToSrg'
+    def destination = file("${buildDir}/mixin/mcp-to-srg.srg")
+    inputs.file(tasks.named('createMcpToSrg').get().output)
+    outputs.file(destination)
+    doLast {
+        destination.parentFile.mkdirs()
+        net.minecraftforge.srgutils.IMappingFile.load(tasks.named('createMcpToSrg').get().output.get().asFile)
+            .write(destination.toPath(), net.minecraftforge.srgutils.IMappingFile.Format.SRG, false)
+    }
+}
+tasks.named('compileJava') {
+    dependsOn mixinMappings
+    options.compilerArgs += [
+        '-AreobfSrgFile=' + file("${buildDir}/mixin/mcp-to-srg.srg"),
+        '-AoutRefMapFile=' + file("${buildDir}/classes/java/main/creeperknight.refmap.json"),
+        '-AdefaultObfuscationEnv=searge'
+    ]
+}
+tasks.jar {
+    archiveFileName = "creeper-knight-${project.version}-mc1.20.1-forge.jar"
+    manifest.attributes 'MixinConfigs': 'creeperknight.mixins.json'
+    finalizedBy 'reobfJar'
+}
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/mods.toml') { expand version: project.version }
+}

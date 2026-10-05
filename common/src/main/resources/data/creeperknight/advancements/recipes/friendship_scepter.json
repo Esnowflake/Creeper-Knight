@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_head": { "trigger": "minecraft:inventory_changed", "conditions": { "items": [{ "items": ["minecraft:creeper_head"] }] } },
+    "has_recipe": { "trigger": "minecraft:recipe_unlocked", "conditions": { "recipe": "creeperknight:friendship_scepter" } }
+  },
+  "requirements": [["has_head", "has_recipe"]],
+  "rewards": { "recipes": ["creeperknight:friendship_scepter"] }
+}

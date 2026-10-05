@@ -1,0 +1,39 @@
+plugins { id 'fabric-loom' }
+base { archivesName = "creeper-knight-${project.version}-mc1.20.1-fabric" }
+dependencies {
+    minecraft 'com.mojang:minecraft:1.20.1'
+    mappings loom.officialMojangMappings()
+    modImplementation 'net.fabricmc:fabric-loader:0.16.14'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.92.2+1.20.1'
+}
+loom { mixin { defaultRefmapName = 'creeperknight.refmap.json' } }
+if (rootProject.hasProperty('uiChecks')) {
+    loom.runs.client {
+        vmArg '-Dcreeperknight.uiChecks=true'
+        programArgs '--width', '960', '--height', '640'
+        runDir 'build/ui-run'
+    }
+}
+if (rootProject.hasProperty('gameChecks')) {
+    loom.runs {
+        gameTest {
+            server()
+            name 'Creeper Knight Game Tests'
+            vmArg '-Dfabric-api.gametest'
+            vmArg '-Dfabric-api.gametest.report-file=build/gametest-results.xml'
+            runDir 'build/gametest-run'
+        }
+    }
+    processResources.doLast {
+        def metadata = file("${destinationDir}/fabric.mod.json")
+        def json = new groovy.json.JsonSlurper().parse(metadata)
+        json.entrypoints['fabric-gametest'] = ['dev.creeperknight.fabric.KnightFabricGameTests']
+        metadata.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json))
+    }
+}
+tasks.jar { archiveFileName = "creeper-knight-${project.version}-mc1.20.1-fabric.jar" }
+tasks.remapJar { archiveFileName = "creeper-knight-${project.version}-mc1.20.1-fabric.jar" }
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand version: project.version }
+}

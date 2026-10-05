@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "creeperknight",
+  "version": "${version}",
+  "name": "Creeper Knight / 苦力怕骑士",
+  "description": "Baby chicken jockey mobs can ride creepers. Includes a server-controlled configuration screen.",
+  "authors": ["Snowflake"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.creeperknight.fabric.CreeperKnightFabric"],
+    "client": ["dev.creeperknight.fabric.CreeperKnightFabricClient"]
+  },
+  "mixins": ["creeperknight.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}

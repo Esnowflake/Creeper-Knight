@@ -1,0 +1,18 @@
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=maximum stationary, hit=true, hitTick=6, closest=0.5589848160743713, fastestStep=5.657125382711254
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=maximum moving, hit=true, hitTick=5, closest=1.3755155801773071, fastestStep=6.3642663535876745
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=small instant radius, hit=true, hitTick=7, closest=0.34268492460250854, fastestStep=5.657125382711254
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=moving countdown, hit=true, hitTick=34, closest=0.30924105644226074, fastestStep=5.797598340444898
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=ordinary knight moving, hit=true, hitTick=31, closest=1.2489947080612183, fastestStep=1.7229982715902161
+[14:26:35] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=maximum around wall, hit=true, hitTick=15, closest=1.269271969795227, fastestStep=4.317591001760925
+[14:26:36] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=villager rider moving, hit=true, hitTick=6, closest=0.7406821846961975, fastestStep=5.797598340444898
+[14:26:36] [Server thread/INFO] (creeperknight) High-speed pursuit: scenario=stopped countdown, hit=true, hitTick=34, closest=2.2359395027160645, fastestStep=5.657125382711254
+[14:26:36] [Server thread/INFO] (creeperknight) High-speed pursuit scenarios passed: 8
+[14:27:09] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum stationary, hit=true, hitTick=6, closest=0.5589848160743713, fastestStep=5.657125382711254
+[14:27:09] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum moving, hit=true, hitTick=5, closest=1.3755155801773071, fastestStep=6.3642663535876745
+[14:27:09] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=small instant radius, hit=true, hitTick=7, closest=0.34268492460250854, fastestStep=5.657125382711254
+[14:27:10] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=moving countdown, hit=true, hitTick=34, closest=0.30924105644226074, fastestStep=5.797598340444898
+[14:27:10] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=ordinary knight moving, hit=true, hitTick=31, closest=0.6310230493545532, fastestStep=1.51700766255338
+[14:27:10] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum around wall, hit=true, hitTick=15, closest=1.617224097251892, fastestStep=4.317591001760926
+[14:27:10] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=villager rider moving, hit=true, hitTick=6, closest=0.7406821846961975, fastestStep=5.797598340444898
+[14:27:11] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=stopped countdown, hit=true, hitTick=34, closest=2.2359395027160645, fastestStep=5.657125382711254
+[14:27:11] [Server thread/INFO] [creeperknight/]: High-speed pursuit scenarios passed: 8
