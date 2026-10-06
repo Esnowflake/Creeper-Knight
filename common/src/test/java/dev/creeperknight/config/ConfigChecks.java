@@ -9,6 +9,9 @@ public final class ConfigChecks {
     private static int passed;
     public static void main(String[] args) throws Exception {
         KnightConfig defaults = new KnightConfig();
+        check(defaults.playerRidingEnabled && defaults.playerChargeSeconds == 2 && defaults.playerSpeedMultiplier == 1
+            && defaults.playerAllowIgnition, "player riding defaults");
+        check(KnightConfig.fromJson("{}").playerChargeSeconds == 2, "old config gains player riding defaults");
         check(defaults.wandLifetimeSeconds == 30 && defaults.wandSpeedMultiplier == 1 && !defaults.wandBlockDamage, "scepter defaults");
         check(KnightConfig.fromJson("{}").wandLifetimeSeconds == 30, "old config gains scepter defaults");
         check(defaults.fullAiTakeover, "full takeover defaults on");

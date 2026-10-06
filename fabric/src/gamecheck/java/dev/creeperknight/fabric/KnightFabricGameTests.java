@@ -6,6 +6,8 @@ import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 
 public final class KnightFabricGameTests implements FabricGameTest {
+    @GameTest(template = "creeperknight:empty", timeoutTicks = 1000)
+    public void playerRiding(GameTestHelper helper) { dev.creeperknight.test.PlayerRidingGameChecks.run(helper); }
     @GameTest(template = "creeperknight:empty", timeoutTicks = 200)
     public void behavior(GameTestHelper helper) { KnightGameChecks.run(helper); }
     @GameTest(template = "creeperknight:empty", timeoutTicks = 100)

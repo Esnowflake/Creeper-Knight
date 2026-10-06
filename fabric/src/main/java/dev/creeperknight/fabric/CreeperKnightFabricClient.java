@@ -19,6 +19,10 @@ import org.lwjgl.glfw.GLFW;
 public final class CreeperKnightFabricClient implements ClientModInitializer {
     private static volatile boolean handshakeAccepted;
     @Override public void onInitializeClient() {
+        dev.creeperknight.client.PlayerRideClient.send = input -> {
+            var buffer = PacketByteBufs.create(); buffer.writeVarInt(input.entityId()); buffer.writeBoolean(input.held());
+            ClientPlayNetworking.send(CreeperKnightFabric.RIDE_INPUT, buffer);
+        };
         KnightClient.send = json -> {
             var buffer = PacketByteBufs.create(); buffer.writeUtf(json, 8192);
             ClientPlayNetworking.send(CreeperKnightFabric.REQUEST, buffer);

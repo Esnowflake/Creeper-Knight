@@ -17,7 +17,7 @@ public final class KnightClient {
         editable = snapshot.editable();
         if (Minecraft.getInstance().screen instanceof KnightConfigScreen screen) screen.accept(snapshot);
     }
-    public static void reset() { config = null; editable = false; }
+    public static void reset() { config = null; editable = false; PlayerRideClient.reset(); }
     public static void open() {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player == null) return;

@@ -11,12 +11,19 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ForgeNetwork {
-    private static final String PROTOCOL = "0.2.1";
+    private static final String PROTOCOL = "3.0";
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
         new ResourceLocation("creeperknight", "network"), () -> PROTOCOL, PROTOCOL::equals, PROTOCOL::equals);
     public record Request(String json) {}
     private ForgeNetwork() {}
     public static void register() {
+        CHANNEL.registerMessage(2, dev.creeperknight.PlayerRiding.Input.class, (message, buffer) -> {
+            buffer.writeVarInt(message.entityId()); buffer.writeBoolean(message.held());
+        }, buffer -> new dev.creeperknight.PlayerRiding.Input(buffer.readVarInt(), buffer.readBoolean()), (message, supplier) -> {
+            var context = supplier.get();
+            context.enqueueWork(() -> { if (context.getSender() != null) dev.creeperknight.PlayerRiding.handle(context.getSender(), message); });
+            context.setPacketHandled(true);
+        }, Optional.of(NetworkDirection.PLAY_TO_SERVER));
         CHANNEL.registerMessage(0, Request.class, (message, buffer) -> buffer.writeUtf(message.json(), 8192),
             buffer -> new Request(buffer.readUtf(8192)), (message, supplier) -> {
                 var context = supplier.get();

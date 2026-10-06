@@ -9,6 +9,8 @@ import net.minecraft.gametest.framework.GameTestHelper;
 @GameTestHolder("creeperknight")
 @PrefixGameTestTemplate(false)
 public final class KnightForgeGameTests {
+    @GameTest(template = "empty", timeoutTicks = 1000)
+    public static void playerRiding(GameTestHelper helper) { dev.creeperknight.test.PlayerRidingGameChecks.run(helper); }
     @GameTest(template = "empty", timeoutTicks = 200)
     public static void behavior(GameTestHelper helper) { KnightGameChecks.run(helper); }
     @GameTest(template = "empty", timeoutTicks = 100)

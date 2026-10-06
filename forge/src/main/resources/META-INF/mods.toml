@@ -6,7 +6,7 @@ modId="creeperknight"
 version="${version}"
 displayName="Creeper Knight / 苦力怕骑士"
 authors="Snowflake"
-description='''Baby chicken jockey mobs can ride creepers, with synchronized in-game settings.'''
+description='''Creeper jockeys, player-controlled creeper mounts with charge explosions, a friendship scepter and synchronized in-game settings.'''
 [[dependencies.creeperknight]]
 modId="forge"
 mandatory=true

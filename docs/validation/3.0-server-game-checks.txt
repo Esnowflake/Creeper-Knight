@@ -1,0 +1,21 @@
+[m[34m[12:04:58][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mHigh-speed pursuit: scenario=maximum stationary, hit=true, hitTick=6, closest=0.5589848160743713, fastestStep=5.657125382711254
+[m[34m[12:04:58][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mHigh-speed pursuit: scenario=maximum moving, hit=true, hitTick=5, closest=1.3755155801773071, fastestStep=6.3642663535876745
+[m[34m[12:04:58][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mHigh-speed pursuit: scenario=small instant radius, hit=true, hitTick=7, closest=0.34268492460250854, fastestStep=5.657125382711254
+[m[34m[12:04:58][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mHigh-speed pursuit: scenario=moving countdown, hit=true, hitTick=34, closest=0.30924105644226074, fastestStep=5.797598340444888
+[m[34m[12:04:59][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mHigh-speed pursuit: scenario=ordinary knight moving, hit=true, hitTick=30, closest=0.5597350597381592, fastestStep=1.8866249786794662
+[m[34m[12:04:59][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mHigh-speed pursuit: scenario=maximum around wall, hit=true, hitTick=15, closest=1.269271969795227, fastestStep=4.317591001760925
+[m[34m[12:04:59][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mHigh-speed pursuit: scenario=villager rider moving, hit=true, hitTick=6, closest=0.7406821846961975, fastestStep=5.797598340444888
+[m[34m[12:04:59][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mHigh-speed pursuit: scenario=stopped countdown, hit=true, hitTick=34, closest=2.2359395027160645, fastestStep=5.657125382711254
+[m[34m[12:04:59][m [32m[Server thread/INFO][m [36m(creeperknight)[m [0mPlayer riding GameTest passed: mounting, automatic/manual fuse, takeover, charge reset, timeout, stale packets, independent speed, charged mounting, zero seconds, armor survival, mobGriefing
+[m[34m[12:04:59][m [32m[Server thread/INFO][m [36m(Minecraft)[m [0mAll 7 required tests passed :)
+[12:05:34] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum stationary, hit=true, hitTick=6, closest=0.5589848160743713, fastestStep=5.657125382711254
+[12:05:35] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum moving, hit=true, hitTick=5, closest=1.3755155801773071, fastestStep=6.3642663535876745
+[12:05:35] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=small instant radius, hit=true, hitTick=7, closest=0.34268492460250854, fastestStep=5.657125382711254
+[12:05:35] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=moving countdown, hit=true, hitTick=34, closest=0.30924105644226074, fastestStep=5.797598340444898
+[12:05:35] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=ordinary knight moving, hit=true, hitTick=30, closest=1.1542997360229492, fastestStep=1.6914332908533232
+[12:05:36] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=maximum around wall, hit=true, hitTick=15, closest=1.617224097251892, fastestStep=4.317591001760926
+[12:05:36] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=villager rider moving, hit=true, hitTick=6, closest=0.7406821846961975, fastestStep=5.797598340444898
+[12:05:36] [Server thread/INFO] [creeperknight/]: High-speed pursuit: scenario=stopped countdown, hit=true, hitTick=34, closest=2.2359395027160645, fastestStep=5.657125382711254
+[12:05:37] [Server thread/INFO] [creeperknight/]: Player riding GameTest passed: mounting, automatic/manual fuse, takeover, charge reset, timeout, stale packets, independent speed, charged mounting, zero seconds, armor survival, mobGriefing
+[12:05:37] [Server thread/INFO] [minecraft/GameTestServer]: All 7 required tests passed :)
+BUILD SUCCESSFUL in 1m 30s

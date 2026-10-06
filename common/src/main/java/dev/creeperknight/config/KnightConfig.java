@@ -39,8 +39,12 @@ public final class KnightConfig {
     public int wandCooldownSeconds = 10;
     public double wandLockRange = 32;
     public boolean wandConsumeGunpowder = true;
+    public boolean playerRidingEnabled = true;
+    public double playerChargeSeconds = 2;
+    public double playerSpeedMultiplier = 1;
+    public boolean playerAllowIgnition = true;
 
-    public enum Group { RIDERS, SPAWNING, SEEKING, MOVEMENT, TARGETS, SCEPTER }
+    public enum Group { RIDERS, SPAWNING, SEEKING, MOVEMENT, TARGETS, SCEPTER, PLAYER_RIDING }
     public record Option(String key, Group group, double min, double max) {
         public Object get(KnightConfig config) {
             try { return KnightConfig.class.getField(key).get(config); }
@@ -96,7 +100,11 @@ public final class KnightConfig {
         new Option("wandGlowSeconds", Group.SCEPTER, 0, 120),
         new Option("wandCooldownSeconds", Group.SCEPTER, 0, 120),
         new Option("wandLockRange", Group.SCEPTER, 2, 128),
-        new Option("wandConsumeGunpowder", Group.SCEPTER, 0, 1)
+        new Option("wandConsumeGunpowder", Group.SCEPTER, 0, 1),
+        new Option("playerRidingEnabled", Group.PLAYER_RIDING, 0, 1),
+        new Option("playerChargeSeconds", Group.PLAYER_RIDING, 0, 120),
+        new Option("playerSpeedMultiplier", Group.PLAYER_RIDING, 1, 10),
+        new Option("playerAllowIgnition", Group.PLAYER_RIDING, 0, 1)
     );
     public void validate() {
         for (Option option : OPTIONS) option.set(this, option.get(this));

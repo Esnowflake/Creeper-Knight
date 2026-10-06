@@ -4,6 +4,7 @@
   "package": "dev.creeperknight.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "creeperknight.refmap.json",
-  "mixins": ["CreeperMixin", "CreeperAccess", "MobMixin", "MobAccess", "ZombieMixin", "LivingEntityMixin", "SlotMixin"],
+  "mixins": ["CreeperMixin", "CreeperAccess", "MobMixin", "MobAccess", "ZombieMixin", "LivingEntityMixin", "LivingEntityAccess", "SlotMixin"],
+  "client": ["PlayerInputMixin", "PlayerHudMixin"],
   "injectors": { "defaultRequire": 1 }
 }

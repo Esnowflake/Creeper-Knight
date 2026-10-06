@@ -19,7 +19,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 
 public final class CreeperKnightFabric implements ModInitializer {
-    public static final String PROTOCOL = "0.2.1";
+    public static final String PROTOCOL = "3.0";
+    public static final ResourceLocation RIDE_INPUT = new ResourceLocation("creeperknight", "ride_input");
     public static final ResourceLocation LOGIN = new ResourceLocation("creeperknight", "handshake");
     public static final ResourceLocation REQUEST = new ResourceLocation("creeperknight", "config_request");
     public static final ResourceLocation SNAPSHOT = new ResourceLocation("creeperknight", "config_snapshot");
@@ -45,6 +46,10 @@ public final class CreeperKnightFabric implements ModInitializer {
                 () -> server.getPlayerList().getPlayers().forEach(p -> send(p, ConfigService.snapshot(p, "")))));
         });
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> send(handler.player, ConfigService.snapshot(handler.player, "")));
+        ServerPlayNetworking.registerGlobalReceiver(RIDE_INPUT, (server, player, handler, buffer, sender) -> {
+            var input = new dev.creeperknight.PlayerRiding.Input(buffer.readVarInt(), buffer.readBoolean());
+            server.execute(() -> dev.creeperknight.PlayerRiding.handle(player, input));
+        });
         net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback.EVENT.register((dispatcher, registry, environment) ->
             dev.creeperknight.KnightCommands.register(dispatcher, server ->
                 server.getPlayerList().getPlayers().forEach(p -> send(p, ConfigService.snapshot(p, "")))));

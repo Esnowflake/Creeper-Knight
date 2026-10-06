@@ -23,7 +23,7 @@ subprojects {
             doLast {
                 def config = file("${destinationDir}/creeperknight.mixins.json")
                 def json = new groovy.json.JsonSlurper().parse(config)
-                json.client = ['UiCaptureMixin']
+                json.client = (json.client ?: []) + ['UiCaptureMixin', 'ClientInputCheckAccess', 'PlayerRideCheckInputMixin']
                 config.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json))
             }
         }

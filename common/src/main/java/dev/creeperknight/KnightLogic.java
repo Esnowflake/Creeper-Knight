@@ -39,7 +39,8 @@ public final class KnightLogic {
     }
     public static boolean isKnight(Mob mob) { return mob instanceof Creeper creeper && rider(creeper) != null; }
     public static boolean suppressGoals(Mob mob) {
-        return isKnight(mob) || mob.getVehicle() instanceof Creeper creeper && ScepterLogic.data(creeper) != null && rider(creeper) == mob;
+        return isKnight(mob) || mob instanceof Creeper mount && PlayerRiding.rider(mount) != null
+            || mob.getVehicle() instanceof Creeper creeper && ScepterLogic.data(creeper) != null && rider(creeper) == mob;
     }
     public static boolean targetAllowed(LivingEntity target) {
         if (target == null || !target.isAlive()) return false;
@@ -57,6 +58,7 @@ public final class KnightLogic {
     /** Called before vanilla advances the fuse. Never overwrites manual ignition. */
     public static void tickCreeper(Creeper creeper) {
         if (creeper.level().isClientSide || !creeper.isAlive()) return;
+        if (PlayerRiding.tick(creeper)) { updateSpeed(creeper, false); return; }
         dev.creeperknight.scepter.ScepterTickets.track(creeper);
         if (ScepterLogic.tickDeadline(creeper)) return;
         if (creeper.getFirstPassenger() instanceof Zombie passenger && (!passenger.isAlive()

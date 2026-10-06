@@ -94,7 +94,7 @@ public abstract class UiCaptureMixin {
             }
             if (creeperknight$scepterPage == 1) {
                 ((EditBox)minecraft.screen.children().get(KnightConfig.Group.values().length + 3)).setValue("30");
-                minecraft.screen.children().stream().filter(w -> w instanceof Button b && b.getMessage().getString().equals(">")).map(w -> (Button)w).findFirst().orElseThrow().onPress();
+                minecraft.screen.mouseScrolled(minecraft.screen.width - 30, 100, -8);
                 creeperknight$scepterPage = 2; return;
             }
             creeperknight$scepterPage = 0;
@@ -124,6 +124,7 @@ public abstract class UiCaptureMixin {
         if (creeperknight$networkStage == 1 && minecraft.player != null && KnightClient.config != null) {
             if (!KnightClient.editable) throw new IllegalStateException("Singleplayer owner cannot edit config");
             var config = KnightClient.config.copy(); config.naturalChance = 0.123;
+            config.playerChargeSeconds = 2; config.playerSpeedMultiplier = 1;
             creeperknight$distance = config.instantExplosionDistance == 2.75 ? 3.25 : 2.75;
             config.instantExplosion = true; config.chaseDuringFuse = false; config.instantExplosionDistance = creeperknight$distance;
             config.wandBlockDamage = false; config.wandLifetimeSeconds = 1; config.wandRiderType = 4;
@@ -151,7 +152,6 @@ public abstract class UiCaptureMixin {
             creeperknight$networkStage = 6; creeperknight$saveTick = minecraft.getSingleplayerServer().getTickCount();
         } else if (creeperknight$networkStage == 6 && minecraft.getSingleplayerServer().getTickCount() - creeperknight$saveTick >= 25) {
             if (KnightSettings.get().wandBlockDamage || KnightClient.config.wandBlockDamage) throw new IllegalStateException("Cancelled confirmation enabled block damage");
-            ((Button)minecraft.screen.children().get(KnightConfig.Group.values().length + 5)).onPress();
             creeperknight$button(minecraft, "creeperknight.save").onPress(); creeperknight$networkStage = 7;
         } else if (creeperknight$networkStage == 7 && minecraft.screen instanceof ConfirmScreen) {
             creeperknight$button(minecraft, "gui.yes").onPress(); creeperknight$networkStage = 8;
@@ -168,7 +168,9 @@ public abstract class UiCaptureMixin {
         } else if (creeperknight$networkStage == 10 && ++creeperknight$frame == 30) {
             creeperknight$screenshot(minecraft, "scepter-inventory.png");
             KnightSettings.LOGGER.info("Registered scepter model and texture rendered in inventory");
-            minecraft.stop();
+            dev.creeperknight.test.ClientRideFixture.start(minecraft); creeperknight$networkStage = 11;
+        } else if (creeperknight$networkStage == 11) {
+            dev.creeperknight.test.ClientRideFixture.tick(minecraft);
         }
     }
     @Unique private boolean creeperknight$matches(KnightConfig config) {

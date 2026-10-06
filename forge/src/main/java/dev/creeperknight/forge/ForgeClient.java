@@ -22,7 +22,10 @@ public final class ForgeClient {
         GLFW.GLFW_KEY_K, "key.categories.creeperknight");
     @SubscribeEvent public static void keys(RegisterKeyMappingsEvent event) { event.register(KEY); }
     @SubscribeEvent public static void setup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> KnightClient.send = json -> ForgeNetwork.CHANNEL.sendToServer(new ForgeNetwork.Request(json)));
+        event.enqueueWork(() -> {
+            KnightClient.send = json -> ForgeNetwork.CHANNEL.sendToServer(new ForgeNetwork.Request(json));
+            dev.creeperknight.client.PlayerRideClient.send = input -> ForgeNetwork.CHANNEL.sendToServer(input);
+        });
         ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
             () -> new ConfigScreenHandler.ConfigScreenFactory((minecraft, parent) -> {
                 KnightConfigScreen screen = new KnightConfigScreen(parent);

@@ -3,7 +3,7 @@
   "id": "creeperknight",
   "version": "${version}",
   "name": "Creeper Knight / 苦力怕骑士",
-  "description": "Baby chicken jockey mobs can ride creepers. Includes a server-controlled configuration screen.",
+  "description": "Creeper jockeys, player-controlled creeper mounts with charge explosions, a friendship scepter and server-controlled settings.",
   "authors": ["Snowflake"],
   "license": "MIT",
   "environment": "*",
